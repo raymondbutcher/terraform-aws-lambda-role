@@ -10,7 +10,7 @@ variable "custom_policies" {
 
 variable "custom_policies_count" {
   type    = number
-  default = 0
+  default = null
 }
 
 variable "dead_letter_config" {
@@ -36,7 +36,7 @@ variable "policy_arns" {
 
 variable "policy_arns_count" {
   type    = number
-  default = 0
+  default = null
 }
 
 variable "tags" {
