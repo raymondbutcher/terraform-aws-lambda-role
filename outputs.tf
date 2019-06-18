@@ -19,8 +19,20 @@ output "create_date" {
     aws_iam_role_policy.vpc_config,
   ]
 }
+
 output "description" {
   value = aws_iam_role.lambda.description
+  depends_on = [
+    aws_iam_role_policy.cloudwatch_logs,
+    aws_iam_role_policy.custom_policies,
+    aws_iam_role_policy.dead_letter_config,
+    aws_iam_role_policy.policy_arns,
+    aws_iam_role_policy.vpc_config,
+  ]
+}
+
+output "function_name" {
+  value = aws_iam_role.lambda.name
   depends_on = [
     aws_iam_role_policy.cloudwatch_logs,
     aws_iam_role_policy.custom_policies,
