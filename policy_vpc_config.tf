@@ -1,5 +1,5 @@
 data "aws_iam_policy_document" "vpc_config" {
-  count = var.vpc_config == null ? 0 : 1
+  count = var.enabled && var.vpc_config != null ? 1 : 0
 
   statement {
     effect = "Allow"
@@ -17,9 +17,9 @@ data "aws_iam_policy_document" "vpc_config" {
 }
 
 resource "aws_iam_role_policy" "vpc_config" {
-  count = var.vpc_config == null ? 0 : 1
+  count = var.enabled && var.vpc_config != null ? 1 : 0
 
   name   = "vpc_config"
-  role   = aws_iam_role.lambda.id
+  role   = aws_iam_role.lambda[0].id
   policy = data.aws_iam_policy_document.vpc_config[0].json
 }

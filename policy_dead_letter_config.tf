@@ -1,5 +1,5 @@
 data "aws_iam_policy_document" "dead_letter_config" {
-  count = var.dead_letter_config == null ? 0 : 1
+  count = var.enabled && var.dead_letter_config != null ? 1 : 0
 
   statement {
     effect = "Allow"
@@ -16,9 +16,9 @@ data "aws_iam_policy_document" "dead_letter_config" {
 }
 
 resource "aws_iam_role_policy" "dead_letter_config" {
-  count = var.dead_letter_config == null ? 0 : 1
+  count = var.enabled && var.dead_letter_config != null ? 1 : 0
 
   name   = "dead_letter_config"
-  role   = aws_iam_role.lambda.id
+  role   = aws_iam_role.lambda[0].id
   policy = data.aws_iam_policy_document.dead_letter_config[0].json
 }

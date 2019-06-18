@@ -20,6 +20,11 @@ variable "dead_letter_config" {
   default = null
 }
 
+variable "enabled" {
+  type    = bool
+  default = true
+}
+
 variable "function_name" {
   type = string
 }

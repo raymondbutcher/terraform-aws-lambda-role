@@ -1,5 +1,5 @@
 output "arn" {
-  value = aws_iam_role.lambda.arn
+  value = var.enabled ? aws_iam_role.lambda[0].arn : null
   depends_on = [
     aws_iam_role_policy.cloudwatch_logs,
     aws_iam_role_policy.custom_policies,
@@ -10,7 +10,7 @@ output "arn" {
 }
 
 output "create_date" {
-  value = aws_iam_role.lambda.create_date
+  value = var.enabled ? aws_iam_role.lambda[0].create_date : null
   depends_on = [
     aws_iam_role_policy.cloudwatch_logs,
     aws_iam_role_policy.custom_policies,
@@ -21,7 +21,7 @@ output "create_date" {
 }
 
 output "description" {
-  value = aws_iam_role.lambda.description
+  value = var.enabled ? aws_iam_role.lambda[0].description : null
   depends_on = [
     aws_iam_role_policy.cloudwatch_logs,
     aws_iam_role_policy.custom_policies,
@@ -32,7 +32,7 @@ output "description" {
 }
 
 output "function_name" {
-  value = aws_iam_role.lambda.name
+  value = var.enabled ? aws_iam_role.lambda[0].name : null
   depends_on = [
     aws_iam_role_policy.cloudwatch_logs,
     aws_iam_role_policy.custom_policies,
@@ -43,7 +43,7 @@ output "function_name" {
 }
 
 output "id" {
-  value = aws_iam_role.lambda.id
+  value = var.enabled ? aws_iam_role.lambda[0].id : null
   depends_on = [
     aws_iam_role_policy.cloudwatch_logs,
     aws_iam_role_policy.custom_policies,
@@ -54,7 +54,7 @@ output "id" {
 }
 
 output "name" {
-  value = aws_iam_role.lambda.name
+  value = var.enabled ? aws_iam_role.lambda[0].name : null
   depends_on = [
     aws_iam_role_policy.cloudwatch_logs,
     aws_iam_role_policy.custom_policies,
@@ -65,7 +65,7 @@ output "name" {
 }
 
 output "unique_id" {
-  value = aws_iam_role.lambda.unique_id
+  value = var.enabled ? aws_iam_role.lambda[0].unique_id : null
   depends_on = [
     aws_iam_role_policy.cloudwatch_logs,
     aws_iam_role_policy.custom_policies,
