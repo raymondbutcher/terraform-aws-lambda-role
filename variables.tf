@@ -29,6 +29,12 @@ variable "function_name" {
   type = string
 }
 
+variable "path" {
+  description = "The path to create the role at"
+  type        = string
+  default     = null
+}
+
 variable "policy_arns" {
   type    = list(string)
   default = []

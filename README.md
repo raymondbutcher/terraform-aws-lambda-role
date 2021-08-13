@@ -23,6 +23,8 @@ module "lambda_role" {
   custom_policies       = []
   custom_policies_count = 0
 
+  path = "/a/iam/path"
+
   # Attach policy for dead_letter_config.
   dead_letter_config = {
     target_arn = aws_sqs_queue.dlq.arn
